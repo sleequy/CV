@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html class=" no-touchevents"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>UserReport Video Survey</title>
+    <script type="text/javascript" async="" src="survey_data/mixpanel-2-latest.min.js"></script><script>
+      var LOAD_START_TIME = (new Date()).getTime();
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <script>
+      var qs = {};
+      window.location.search.split(/[\?&]/).forEach(function(p) {
+        var split = p.split('=');
+        var key = split[0], value = split[1];
+        qs[key] = value !== undefined ? value : true; // Query-string ?surveyId=xxx&test turns into object { surveyId: "xxx", test: true }
+      });
+
+      // preview params
+      var hash = window.location.hash.substr(1);
+      var preview = null;
+      if (hash) {
+        preview = JSON.parse(decodeURIComponent(hash));
+      }
+
+      var params = {
+        uid: qs.uid || (qs.demo && 'beeb1c79-8bca-4756-9caf-552cc878b0b9'),
+        ownId: qs.oid,
+        group: qs.group || (qs.demo && 'test'),
+        surveyId: qs.surveyId || (qs.demo && 'qa1-demo-survey'),
+        invitationId: qs.invitationId || (qs.demo && '83bb9d3f-3347-42bf-8d9e-76c14fcfb730'),
+        completetcode: qs.completetcode,
+        isDemo: !!qs.demo,
+      };
+
+      document.write('<link rel="preload" href="../bls/' + params.surveyId + '/params.js" as="script">');
+      document.write('<link rel="preload" href="../bls/' + params.surveyId + '/survey.js" as="script">');
+    </script><link rel="preload" href="survey_data/params.js" as="script"><link rel="preload" href="survey_data/survey.js" as="script">
+
+    <link rel="preload" href="survey_data/main.css" as="style">
+    <link rel="preload" href="survey_data/css.css" as="style">
+    <link rel="preload" href="https://sak.userreport.com/_rt/bl/assets/1666357732108/media/poster.jpg" as="image">
+    <link rel="preload" href="survey_data/people.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="survey_data/app.js" as="script">
+
+    <link rel="stylesheet" href="survey_data/css.css">
+    <link rel="stylesheet" href="survey_data/main.css" type="text/css" media="screen" charset="utf-8">
+
+<script>
+(function(c,a){if(!a.__SV){var b=window;try{var d,m,j,k=b.location,f=k.hash;d=function(a,b){return(m=a.match(RegExp(b+"=([^&]*)")))?m[1]:null};f&&d(f,"state")&&(j=JSON.parse(decodeURIComponent(d(f,"state"))),"mpeditor"===j.action&&(b.sessionStorage.setItem("_mpcehash",f),history.replaceState(j.desiredHash||"",c.title,k.pathname+k.search)))}catch(n){}var l,h;window.mixpanel=a;a._i=[];a.init=function(b,d,g){function c(b,i){var a=i.split(".");2==a.length&&(b=b[a[0]],i=a[1]);b[i]=function(){b.push([i].concat(Array.prototype.slice.call(arguments,
+0)))}}var e=a;"undefined"!==typeof g?e=a[g]=[]:g="mixpanel";e.people=e.people||[];e.toString=function(b){var a="mixpanel";"mixpanel"!==g&&(a+="."+g);b||(a+=" (stub)");return a};e.people.toString=function(){return e.toString(1)+".people (stub)"};l="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+for(h=0;h<l.length;h++)c(e,l[h]);var f="set set_once union unset remove delete".split(" ");e.get_group=function(){function a(c){b[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));e.push([d,call2])}}for(var b={},d=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<f.length;c++)a(f[c]);return b};a._i.push([b,d,g])};a.__SV=1.2;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+MIXPANEL_CUSTOM_LIB_URL:"file:"===c.location.protocol&&"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js";d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d)}})(document,window.mixpanel||[]);
+mixpanel.init('e94f57ace7b9ef73ea81fe6431be1351', {
+  batch_requests: false,
+  disable_persistence: true,
+  disable_cookie: true,
+  ignore_dnt: true
+});
+</script>
+
+    <script>
+      /* set vl cookie */
+      var now = new Date().getTime();
+      var expires = new Date(now + 30 * 24 * 60 * 60 * 1000);
+      document.cookie = 'vl=' + now + '; expires=' + expires.toUTCString() + '; SameSite=None; Secure';
+    </script>
+  </head>
+
+	<body class="body--dark">
+    <video poster="assets/1666357732108/media/poster.jpg" preload="auto" class="video" playsinline="" autoplay="autoplay" muted="muted" loop="">
+    <source src="survey_data/people.mp4" type="video/mp4">
+</video>
+
+    <script type="template" id="question">
+      <div class="js-question question question--layout-2 {{MULTISELECT}}"
+        data-visibility="is-hidden"
+        data-answered="0"
+        data-parent="{{PARENT}}"
+        data-number="{{INDEX}}"
+        data-ident="{{IDENT}}"
+        data-type="{{TYPE}}">
+
+        <div class="question-stuff">
+          <div class="question__title">
+            <h2 class="{{DIRECTION}}">
+              <bdi>
+                {{TEXT}}
+              </bdi>
+            </h2>
+          </div>
+
+          <div class="question-controls">
+            <div class="js-item js-item-0 button button--default button--rounded control control--skip">
+              <div class="bullet" data-number="0" data-result="-1"></div>
+              <span data-l10n="misc.skipQuestion">
+                Skip question
+              </span>
+            </div>
+
+<div class="js-next control control--next control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12" >
+    <path class="fill" d="M6,11.5v-8l2.4,2.3C8.6,6,8.9,6,9.1,5.9l0.7-0.7C10,5,10,4.7,9.9,4.5L5.3,0.1C5.1,0,4.8,0,4.6,0.1
+      L0.1,4.5C0,4.7,0,5,0.1,5.1l0.7,0.7C1.1,6,1.4,6,1.6,5.8L4,3.5v8C4,11.8,4.2,12,4.5,12h1C5.8,12,6,11.8,6,11.5z"/>
+  </svg>
+</div>
+<div class="js-prev control control--prev control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12" >
+    <path class="fill" d="M4,0.5v8L1.6,6.1C1.4,6,1.1,6,0.9,6.1L0.1,6.8C0,7,0,7.3,0.1,7.5l4.5,4.3c0.2,0.2,0.5,0.2,0.7,0
+      l4.5-4.3c0.2-0.2,0.2-0.5,0-0.7L9.1,6.2C8.9,6,8.6,6,8.4,6.2L6,8.5v-8C6,0.2,5.8,0,5.5,0h-1C4.2,0,4,0.2,4,0.5z"/>
+  </svg>
+</div>
+          </div>
+        </div>
+
+        <div class="js-options question__options">
+          {{ITEMS}}
+        </div>
+      </div>
+    </script>
+
+    <script type="template" id="question-list">
+      <div class="question__list-container {{MULTISELECT_CONTAINER}}">
+        <ul class="question__list {{MULTISELECT}} {{OPTIONS_AMOUNT}}">
+          {{ITEMS}}
+        </ul>
+      </div>
+
+      <div class="button button--solid button--rounded button-answer">
+        <svg width="20px" height="20px" viewBox="0 0 16 16">
+          <path d="M8.0625,11 L8.0625,13.3950919 C8.0625,13.7160294 8.44275,13.8427794 8.6661875,13.6778419
+            L12.7945,10.7975294 C13.01875,10.6342169 12.9626875,10.3652794 12.73925,10.2019669 L8.694625,7.32165438
+            C8.4695625,7.15834188 8.0625,7.28265438 8.0625,7.60440438 L8.0625,10 L4.99961498,10 C4.44422807,10 4,9.55697267 4,9.00038502
+            L4,3.99961498 C4,3.44422807 4.44302733,3 4.99961498,3 L7.00038502,3 L7.00038502,2 L4.99961498,2
+            C3.88743329,2 3,2.89525812 3,3.99961498 L3,9.00038502 C3,10.1125667 3.89525812,11 4.99961498,11 L8.0625,11 Z"/>
+        </svg>
+
+        <bdi>
+          <span data-l10n="misc.continue">
+            Continue
+          </span>
+        </bdi>
+      </div>
+    </script>
+
+    <script type="template" id="question-list-item">
+      <li class="js-item js-item-{{INDEX}} {{MULTISELECT}}">
+        <span class="question__list__bar" style="width:{{PERCENTMAX}}%;"></span>
+        <span class="question__list__number">{{PERCENT}}</span>
+        <span class="bullet option" data-number="{{INDEX}}" data-result="{{ID}}"></span>
+
+        <span class="js-text">{{TEXT}}</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox" />
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">{{TEXT}}</span>
+        </span>
+      </li>
+    </script>
+
+    <script type="template" id="question-text">
+      <div class="input-wrap">
+        <input class="input-text"
+          type="{{TYPE}}"
+          {{MIN}}
+          {{MAX}}
+          required
+        />
+        <div class="button button--solid">OK</div>
+      </div>
+      <div class="answer-box answer-box--hidden">
+        <bdi>
+          <span data-l10n="misc.youAnswered">
+            You answered
+          </span>
+        </bdi>
+        <strong>XX</strong>
+      </div>
+    </script>
+
+    <script type="template" id="question-intro">
+      <div class="img-wrap">
+        <img src={{SRC}} />
+      </div>
+
+      <div class="button button--solid button--rounded button-continue">
+        <svg width="20px" height="20px" viewBox="0 0 16 16">
+          <path d="M8.0625,11 L8.0625,13.3950919 C8.0625,13.7160294 8.44275,13.8427794 8.6661875,13.6778419
+            L12.7945,10.7975294 C13.01875,10.6342169 12.9626875,10.3652794 12.73925,10.2019669 L8.694625,7.32165438
+            C8.4695625,7.15834188 8.0625,7.28265438 8.0625,7.60440438 L8.0625,10 L4.99961498,10 C4.44422807,10 4,9.55697267 4,9.00038502
+            L4,3.99961498 C4,3.44422807 4.44302733,3 4.99961498,3 L7.00038502,3 L7.00038502,2 L4.99961498,2
+            C3.88743329,2 3,2.89525812 3,3.99961498 L3,9.00038502 C3,10.1125667 3.89525812,11 4.99961498,11 L8.0625,11 Z"/>
+        </svg>
+
+        <bdi>
+          <span data-l10n="misc.continue">
+            Continue
+          </span>
+        </bdi>
+      </div>
+    </script>
+
+    <div class="survey">
+      <div class="survey__inner">
+
+        <div class="js-close control control--close control--hidden">
+          ×
+        </div>
+
+        <script>
+          if (!Array.prototype.find) {
+            Object.defineProperty(Array.prototype, 'find', {
+              value: function(predicate) {
+                // 1. Let O be ? ToObject(this value).
+                if (this == null) {
+                  throw TypeError('"this" is null or not defined');
+                }
+
+                var o = Object(this);
+
+                // 2. Let len be ? ToLength(? Get(O, "length")).
+                var len = o.length >>> 0;
+
+                // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+                if (typeof predicate !== 'function') {
+                  throw TypeError('predicate must be a function');
+                }
+
+                // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+                var thisArg = arguments[1];
+
+                // 5. Let k be 0.
+                var k = 0;
+
+                // 6. Repeat, while k < len
+                while (k < len) {
+                  // a. Let Pk be ! ToString(k).
+                  // b. Let kValue be ? Get(O, Pk).
+                  // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                  // d. If testResult is true, return kValue.
+                  var kValue = o[k];
+                  if (predicate.call(thisArg, kValue, k, o)) {
+                    return kValue;
+                  }
+                  // e. Increase k by 1.
+                  k++;
+                }
+
+                // 7. Return undefined.
+                return undefined;
+              },
+              configurable: true,
+              writable: true
+            });
+          }
+        </script>
+
+        <script>
+          if (!params.surveyId) {
+            console.log("Wrong link");
+            document.close();
+          } if (preview) {
+            mediaSettings = preview.params;
+          } else {
+            document.write('<scr' + 'ipt src="../bls/' + params.surveyId + '/params.js"></scr' + 'ipt>');
+          }
+
+          var _urq = [];
+          if (preview) {
+            _urq.push(['_resourcesLoaded', 'SurveyStructure', preview.survey]);
+          } else {
+            document.write('<scr' + 'ipt src="../bls/' + params.surveyId + '/survey.js"></scr' + 'ipt>');
+          }
+
+          var identIndex = {
+            PanelRecruitment: 100103,
+            VisitsFrequency: 1,
+            OveralRating: 2,
+            Satisfaction: [3, 4, 5, 6, 7, 8, 9, 10, 11],
+            Gender: 14,
+            AgeGroup: -15,
+            EmploymentType: 100101,
+            IncomeLevel: 19,
+            Education: 18,
+            ChildrenInFamily: 100201,
+            FamilySize: 20,
+            PostCode: 22,
+            Email: 23,
+            NewsletterSignQuestion: 100104,
+            Country: 100102,
+            Nps: 100105,
+            NpsFeedback: 100106
+          };
+          var filteredIdents = []
+            .concat(identIndex.VisitsFrequency)
+            .concat(identIndex.Satisfaction)
+            .concat(
+              identIndex.PostCode,
+              identIndex.NewsletterSignQuestion,
+              identIndex.Nps, identIndex.NpsFeedback
+            );
+        </script><script src="survey_data/params.js"></script><script src="survey_data/survey.js"></script>
+
+        <script>
+          var urqSurvey = _urq
+            .find(function(item) {
+              return item[0] === '_resourcesLoaded' && item[1] === 'SurveyStructure';
+            });
+          var urqQuestions = urqSurvey && urqSurvey[2] && urqSurvey[2].questions;
+          var questionsDump = urqQuestions ? urqQuestions.filter(function(q) { return q.isActive; }) : [];
+        </script>
+
+        <script>
+          var getQuestionsByIdent = function() {
+            var idents = Array.prototype.slice.call(arguments);
+            return questionsDump
+              .filter(function(question) {
+                return idents.includes(question.ident) &&
+                  !question.affectingFilter;
+              });
+          };
+
+          // questions head
+
+          var questionsHead = getQuestionsByIdent(identIndex.Nps, identIndex.NpsFeedback);
+
+          // questions tail
+
+          var questionsTail = []
+            .concat(getQuestionsByIdent(identIndex.Email))
+            .concat(getQuestionsByIdent(identIndex.PanelRecruitment))
+            .concat(getQuestionsByIdent(identIndex.NewsletterSignQuestion));
+
+          // opinion questions
+
+          var getQuestionsByCategory = function() {
+            var categories = Array.prototype.slice.call(arguments);
+            return questionsDump
+              .filter(function(question) {
+                return categories.includes(question.category) &&
+                  !question.affectingFilter &&
+                  questionsHead.every(function(head) { return head.ident !== question.ident; }) &&
+                  questionsTail.every(function(tail) { return tail.ident !== question.ident; });
+              });
+          };
+
+          var questionsOpinionDump = getQuestionsByCategory(1);
+          var questionsOpinionMandatory = questionsOpinionDump.filter(function(question) { return question.isAlwaysAsked; });
+          var questionsOpinionOptional = questionsOpinionDump.filter(function(question) { return !question.isAlwaysAsked; });
+
+          var questionsOpinionAvailable = 10;
+          var questionsOpinion = questionsOpinionMandatory.length >= questionsOpinionAvailable ?
+            questionsOpinionMandatory.splice(0, questionsOpinionAvailable) :
+            questionsOpinionMandatory.concat(questionsOpinionOptional.splice(0, questionsOpinionAvailable - questionsOpinionMandatory.length));
+
+          // personal questions
+
+          var questionsPersonalDump = getQuestionsByCategory(0);
+          var questionsPersonalMandatory = questionsPersonalDump.filter(function(question) { return question.isAlwaysAsked; });
+          var questionsPersonalOptional = questionsPersonalDump.filter(function(question) { return !question.isAlwaysAsked; });
+
+          var questionsPersonalAvailable = 18 - questionsOpinion.length;
+          var questionsPersonal = questionsPersonalMandatory.length >= questionsPersonalAvailable ?
+            questionsPersonalMandatory.splice(0, questionsPersonalAvailable) :
+            questionsPersonalMandatory.concat(questionsPersonalOptional.splice(0, questionsPersonalAvailable - questionsPersonalMandatory.length));
+
+          var questionsListDump = [].concat(questionsDump);
+
+          var questionsList = questionsListDump.reduce(function(memo, question) {
+            if (question.imageSrc) {
+              memo.push({
+                ident: question.ident + '-intro',
+                type: 'intro',
+                parent: false,
+                options: [],
+                imageSrc: question.imageSrc,
+                text: question.introductionText || 'Question intro',
+              }, question);
+            } else {
+              memo.push(question);
+            }
+
+            return memo;
+          }, []);
+        </script>
+
+        <script>
+  var countryIndex = {
+    AF: '1',
+    AL: '3',
+    DZ: '4',
+    AD: '6',
+    AO: '7',
+    AR: '11',
+    AM: '12',
+    AU: '14',
+    AT: '15',
+    AZ: '16',
+    BD: '19',
+    BY: '21',
+    BE: '22',
+    BJ: '24',
+    BM: '25',
+    BT: '26',
+    BO: '27',
+    BA: '28',
+    BR: '31',
+    BN: '33',
+    BG: '34',
+    BF: '35',
+    BI: '36',
+    KH: '37',
+    CM: '38',
+    CA: '39',
+    CV: '40',
+    CF: '42',
+    TD: '43',
+    CL: '44',
+    CN: '45',
+    CO: '48',
+    CR: '53',
+    CI: '54',
+    HR: '55',
+    CU: '56',
+    CY: '57',
+    CZ: '58',
+    DK: '59',
+    DO: '62',
+    EC: '63',
+    SV: '65',
+    EE: '68',
+    ET: '69',
+    FI: '73',
+    FR: '74',
+    DE: '81',
+    GR: '84',
+    GT: '89',
+    HT: '94',
+    VA: '96',
+    HN: '97',
+    HU: '99',
+    IS: '100',
+    IN: '101',
+    ID: '102',
+    IR: '103',
+    IQ: '104',
+    IE: '105',
+    IL: '107',
+    IT: '108',
+    JM: '109',
+    JP: '110',
+    KZ: '113',
+    KE: '114',
+    KR: '117',
+    KG: '119',
+    LV: '121',
+    LB: '122',
+    LR: '124',
+    LY: '125',
+    LI: '126',
+    LT: '127',
+    LU: '128',
+    MK: '130',
+    MG: '131',
+    MY: '133',
+    MV: '134',
+    ML: '135',
+    MT: '136',
+    MX: '142',
+    MD: '144',
+    MC: '145',
+    MN: '146',
+    ME: '147',
+    MA: '149',
+    MZ: '150',
+    MM: '151',
+    NP: '154',
+    NL: '155',
+    NZ: '158',
+    NI: '159',
+    NE: '160',
+    NG: '161',
+    NO: '165',
+    PK: '167',
+    PA: '170',
+    PG: '171',
+    PY: '172',
+    PE: '173',
+    PH: '174',
+    PL: '176',
+    PT: '177',
+    PR: '178',
+    RO: '181',
+    RU: '182',
+    SM: '192',
+    SN: '195',
+    RS: '196',
+    SG: '199',
+    SK: '200',
+    SI: '201',
+    SO: '203',
+    ZA: '204',
+    ES: '206',
+    LK: '207',
+    SZ: '211',
+    SE: '212',
+    CH: '213',
+    TW: '215',
+    TZ: '217',
+    TH: '218',
+    TL: '219',
+    TN: '224',
+    TR: '225',
+    UG: '229',
+    UA: '230',
+    GB: '232',
+    US: '233',
+    UY: '235',
+    UZ: '236',
+    VE: '238',
+    VN: '239',
+    YE: '244',
+    ZW: '246'
+  };
+</script>
+
+        <script>
+          var resultsList = (
+            _urq.find(function(item) {
+              return item[0] === '_resourcesLoaded' && item[1] === 'SurveyResults';
+            }) ||
+            [0, 0, { SurveyResult: {} }]
+          )[2]
+            .SurveyResult;
+
+          // Fix questions order
+          for (var i = questionsList.length - 1; i > 0; i--) {
+            if (questionsList[i].affectingFilter) {
+              var question = questionsList.splice(i, 1)[0];
+              var affect = questionsList.find(function (item) {
+                return item.ident === question.affectingFilter.questionIdent;
+              });
+              var affectIndex = questionsList.indexOf(affect);
+              questionsList.splice(affectIndex + 1, 0, question)
+            }
+          }
+
+          var questions = questionsList.map(function(question) {
+            var count = question.options.reduce(function(memo, option) {
+              return memo + (
+                resultsList['q' + question.ident] &&
+                resultsList['q' + question.ident]['o' + option.code] ||
+                0
+              );
+            }, 0);
+
+            var maxCount = Math.max.call(this, question.options.concat(0).map(function(option) {
+              return resultsList['q' + question.ident] &&
+                resultsList['q' + question.ident]['o' + option.code] ||
+                0;
+            }));
+
+            function getOptions() {
+              if (question.randomizeOptions) {
+                var options = question.options
+                  .filter(function(option) { return option.type !== 2; })
+                  .sort(function() { return Math.random() - 0.5; });
+
+                var other = question.options
+                  .find(function(option) { return option.type === 2; });
+
+                if (other) {
+                  options.push(other);
+                }
+
+                return options;
+              }
+
+              return question.options;
+            }
+
+            return {
+              id: question.ident,
+              text: mediaSettings.localization.questionOverrides['q' + question.ident] || question.text,
+              type: question.type,
+              range: question.range,
+              parent: !!question.affectingFilter,
+              options: getOptions().map(function(option) {
+                var result = question.isQuestionStatVisible &&
+                  resultsList['q' + question.ident] &&
+                  resultsList['q' + question.ident]['o' + option.code] ||
+                  0;
+
+                  var percent = count ? Math.round(result / count * 100) + '%' : '';
+                  var percentMax = maxCount ? Math.round(result / maxCount * 100) : '';
+
+                return {
+                  id: option.code,
+                  text: mediaSettings.localization.questionOverrides['q' + question.ident + 'o' + option.code] || option.text,
+                  percent: percent,
+                  percentMax: percentMax,
+                };
+              }),
+              imageSrc: question.imageSrc,
+            };
+          });
+        </script>
+
+        <div class="js-questions questions questions--animation-active" style="transform: translateY(-600vh);">
+
+          <div class="js-question question question--layout-1" data-visibility="is-hidden" data-answered="0" data-number="7">
+              <div class="question--layout-1__inner">
+                <div class="question__title">
+                  <h1>
+                    <bdi>
+                      Merci pour vos commentaires, nous les apprécions sincèrement !
+                    </bdi>
+                  </h1>
+                </div>
+                <div class="question__options">
+
+                  <div class="button-group-container">
+                    <div class="button-group">
+                      <div class="js-item js-item-1 js-close button button--default button--rounded">
+                        Fermer le questionnaire
+                        <span class="bullet" data-number="1"></span>
+                      </div>
+                    </div>
+
+<div class="js-next control control--next control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M6,11.5v-8l2.4,2.3C8.6,6,8.9,6,9.1,5.9l0.7-0.7C10,5,10,4.7,9.9,4.5L5.3,0.1C5.1,0,4.8,0,4.6,0.1
+      L0.1,4.5C0,4.7,0,5,0.1,5.1l0.7,0.7C1.1,6,1.4,6,1.6,5.8L4,3.5v8C4,11.8,4.2,12,4.5,12h1C5.8,12,6,11.8,6,11.5z"></path>
+  </svg>
+</div>
+<div class="js-prev control control--prev control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M4,0.5v8L1.6,6.1C1.4,6,1.1,6,0.9,6.1L0.1,6.8C0,7,0,7.3,0.1,7.5l4.5,4.3c0.2,0.2,0.5,0.2,0.7,0
+      l4.5-4.3c0.2-0.2,0.2-0.5,0-0.7L9.1,6.2C8.9,6,8.6,6,8.4,6.2L6,8.5v-8C6,0.2,5.8,0,5.5,0h-1C4.2,0,4,0.2,4,0.5z"></path>
+  </svg>
+</div>
+                  </div>
+
+                  <br>
+                  <div class="disclaimer font-size-sm">
+                    Questionnaire vidéo édité par <a target="_blank" href="https://www.audienceproject.com/?utm_medium=video-survey&amp;utm_campaign=v1">AudienceProject</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          
+      <div class="js-question question question--layout-2 question_multiselect" data-visibility="is-hidden" data-answered="0" data-parent="0" data-number="6" data-ident="4962" data-type="1">
+
+        <div class="question-stuff">
+          <div class="question__title">
+            <h2 class="">
+              <bdi>
+                Quels sont les éléments qui freineraient votre consommation d'alcool ? (Plusieurs réponses possibles):
+              </bdi>
+            </h2>
+          </div>
+
+          <div class="question-controls">
+            <div class="js-item js-item-0 button button--default button--rounded control control--skip">
+              <div class="bullet" data-number="0" data-result="-1"></div>
+              Passer
+            </div>
+
+<div class="js-next control control--next control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M6,11.5v-8l2.4,2.3C8.6,6,8.9,6,9.1,5.9l0.7-0.7C10,5,10,4.7,9.9,4.5L5.3,0.1C5.1,0,4.8,0,4.6,0.1
+      L0.1,4.5C0,4.7,0,5,0.1,5.1l0.7,0.7C1.1,6,1.4,6,1.6,5.8L4,3.5v8C4,11.8,4.2,12,4.5,12h1C5.8,12,6,11.8,6,11.5z"></path>
+  </svg>
+</div>
+<div class="js-prev control control--prev control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M4,0.5v8L1.6,6.1C1.4,6,1.1,6,0.9,6.1L0.1,6.8C0,7,0,7.3,0.1,7.5l4.5,4.3c0.2,0.2,0.5,0.2,0.7,0
+      l4.5-4.3c0.2-0.2,0.2-0.5,0-0.7L9.1,6.2C8.9,6,8.6,6,8.4,6.2L6,8.5v-8C6,0.2,5.8,0,5.5,0h-1C4.2,0,4,0.2,4,0.5z"></path>
+  </svg>
+</div>
+          </div>
+        </div>
+
+        <div class="js-options question__options">
+          
+      <div class="question__list-container question__list-container_multiselect">
+        <ul class="question__list question__list_multiselect options-amount_6">
+          
+      <li class="js-item js-item-1 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="1" data-result="4"></span>
+
+        <span class="js-text">L’addiction</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">L’addiction</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-2 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="2" data-result="2"></span>
+
+        <span class="js-text">Le prix </span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Le prix </span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-3 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="3" data-result="3"></span>
+
+        <span class="js-text">Le goût</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Le goût</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-4 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="4" data-result="5"></span>
+
+        <span class="js-text">L’inhibition réduite, les mauvaises décisions potentielles</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">L’inhibition réduite, les mauvaises décisions potentielles</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-5 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="5" data-result="6"></span>
+
+        <span class="js-text">J’aime me démarquer des autres</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">J’aime me démarquer des autres</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-6 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="6" data-result="1"></span>
+
+        <span class="js-text">L’impact négatif sur ma santé</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">L’impact négatif sur ma santé</span>
+        </span>
+      </li>
+    
+        </ul>
+      </div>
+
+      <div class="button button--solid button--rounded button-answer">
+        <svg width="20px" height="20px" viewBox="0 0 16 16">
+          <path d="M8.0625,11 L8.0625,13.3950919 C8.0625,13.7160294 8.44275,13.8427794 8.6661875,13.6778419
+            L12.7945,10.7975294 C13.01875,10.6342169 12.9626875,10.3652794 12.73925,10.2019669 L8.694625,7.32165438
+            C8.4695625,7.15834188 8.0625,7.28265438 8.0625,7.60440438 L8.0625,10 L4.99961498,10 C4.44422807,10 4,9.55697267 4,9.00038502
+            L4,3.99961498 C4,3.44422807 4.44302733,3 4.99961498,3 L7.00038502,3 L7.00038502,2 L4.99961498,2
+            C3.88743329,2 3,2.89525812 3,3.99961498 L3,9.00038502 C3,10.1125667 3.89525812,11 4.99961498,11 L8.0625,11 Z"></path>
+        </svg>
+
+        <bdi>
+          Valider 
+        </bdi>
+      </div>
+    
+        </div>
+      </div>
+    
+      <div class="js-question question question--layout-2 " data-visibility="is-hidden" data-answered="0" data-parent="0" data-number="5" data-ident="4961" data-type="0">
+
+        <div class="question-stuff">
+          <div class="question__title">
+            <h2 class="">
+              <bdi>
+                A quelle fréquence vous arrive-t-il de consommer des boissons alcoolisées ? 
+              </bdi>
+            </h2>
+          </div>
+
+          <div class="question-controls">
+            <div class="js-item js-item-0 button button--default button--rounded control control--skip">
+              <div class="bullet" data-number="0" data-result="-1"></div>
+              Passer
+            </div>
+
+<div class="js-next control control--next control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M6,11.5v-8l2.4,2.3C8.6,6,8.9,6,9.1,5.9l0.7-0.7C10,5,10,4.7,9.9,4.5L5.3,0.1C5.1,0,4.8,0,4.6,0.1
+      L0.1,4.5C0,4.7,0,5,0.1,5.1l0.7,0.7C1.1,6,1.4,6,1.6,5.8L4,3.5v8C4,11.8,4.2,12,4.5,12h1C5.8,12,6,11.8,6,11.5z"></path>
+  </svg>
+</div>
+<div class="js-prev control control--prev control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M4,0.5v8L1.6,6.1C1.4,6,1.1,6,0.9,6.1L0.1,6.8C0,7,0,7.3,0.1,7.5l4.5,4.3c0.2,0.2,0.5,0.2,0.7,0
+      l4.5-4.3c0.2-0.2,0.2-0.5,0-0.7L9.1,6.2C8.9,6,8.6,6,8.4,6.2L6,8.5v-8C6,0.2,5.8,0,5.5,0h-1C4.2,0,4,0.2,4,0.5z"></path>
+  </svg>
+</div>
+          </div>
+        </div>
+
+        <div class="js-options question__options">
+          
+      <div class="question__list-container ">
+        <ul class="question__list  options-amount_4">
+          
+      <li class="js-item js-item-1 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="1" data-result="2"></span>
+
+        <span class="js-text">Une fois par mois ou moins</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Une fois par mois ou moins</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-2 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="2" data-result="3"></span>
+
+        <span class="js-text">2 à 4 fois par mois</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">2 à 4 fois par mois</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-3 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="3" data-result="4"></span>
+
+        <span class="js-text">2 à 3 fois par semaine</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">2 à 3 fois par semaine</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-4 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="4" data-result="5"></span>
+
+        <span class="js-text">4 fois par semaine et plus</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">4 fois par semaine et plus</span>
+        </span>
+      </li>
+    
+        </ul>
+      </div>
+
+      <div class="button button--solid button--rounded button-answer">
+        <svg width="20px" height="20px" viewBox="0 0 16 16">
+          <path d="M8.0625,11 L8.0625,13.3950919 C8.0625,13.7160294 8.44275,13.8427794 8.6661875,13.6778419
+            L12.7945,10.7975294 C13.01875,10.6342169 12.9626875,10.3652794 12.73925,10.2019669 L8.694625,7.32165438
+            C8.4695625,7.15834188 8.0625,7.28265438 8.0625,7.60440438 L8.0625,10 L4.99961498,10 C4.44422807,10 4,9.55697267 4,9.00038502
+            L4,3.99961498 C4,3.44422807 4.44302733,3 4.99961498,3 L7.00038502,3 L7.00038502,2 L4.99961498,2
+            C3.88743329,2 3,2.89525812 3,3.99961498 L3,9.00038502 C3,10.1125667 3.89525812,11 4.99961498,11 L8.0625,11 Z"></path>
+        </svg>
+
+        <bdi>
+          Valider 
+        </bdi>
+      </div>
+    
+        </div>
+      </div>
+    
+      <div class="js-question question question--layout-2 question_multiselect" data-visibility="is-hidden" data-answered="0" data-parent="0" data-number="4" data-ident="4963" data-type="1">
+
+        <div class="question-stuff">
+          <div class="question__title">
+            <h2 class="">
+              <bdi>
+                 Pour vous, boire de l'alcool est un(e) façon de:
+              </bdi>
+            </h2>
+          </div>
+
+          <div class="question-controls">
+            <div class="js-item js-item-0 button button--default button--rounded control control--skip">
+              <div class="bullet" data-number="0" data-result="-1"></div>
+              Passer
+            </div>
+
+<div class="js-next control control--next control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M6,11.5v-8l2.4,2.3C8.6,6,8.9,6,9.1,5.9l0.7-0.7C10,5,10,4.7,9.9,4.5L5.3,0.1C5.1,0,4.8,0,4.6,0.1
+      L0.1,4.5C0,4.7,0,5,0.1,5.1l0.7,0.7C1.1,6,1.4,6,1.6,5.8L4,3.5v8C4,11.8,4.2,12,4.5,12h1C5.8,12,6,11.8,6,11.5z"></path>
+  </svg>
+</div>
+<div class="js-prev control control--prev control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M4,0.5v8L1.6,6.1C1.4,6,1.1,6,0.9,6.1L0.1,6.8C0,7,0,7.3,0.1,7.5l4.5,4.3c0.2,0.2,0.5,0.2,0.7,0
+      l4.5-4.3c0.2-0.2,0.2-0.5,0-0.7L9.1,6.2C8.9,6,8.6,6,8.4,6.2L6,8.5v-8C6,0.2,5.8,0,5.5,0h-1C4.2,0,4,0.2,4,0.5z"></path>
+  </svg>
+</div>
+          </div>
+        </div>
+
+        <div class="js-options question__options">
+          
+      <div class="question__list-container question__list-container_multiselect">
+        <ul class="question__list question__list_multiselect options-amount_7">
+          
+      <li class="js-item js-item-1 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="1" data-result="4"></span>
+
+        <span class="js-text">Exprimer sa liberté</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Exprimer sa liberté</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-2 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="2" data-result="2"></span>
+
+        <span class="js-text">Socialiser</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Socialiser</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-3 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="3" data-result="3"></span>
+
+        <span class="js-text">Se divertir</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Se divertir</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-4 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="4" data-result="6"></span>
+
+        <span class="js-text">Se donner du courage</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Se donner du courage</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-5 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="5" data-result="1"></span>
+
+        <span class="js-text">Destresser</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Destresser</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-6 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="6" data-result="5"></span>
+
+        <span class="js-text">Mettre en avant mon style</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Mettre en avant mon style</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-7 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="7" data-result="7"></span>
+
+        <span class="js-text">Se conformer aux autres</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Se conformer aux autres</span>
+        </span>
+      </li>
+    
+        </ul>
+      </div>
+
+      <div class="button button--solid button--rounded button-answer">
+        <svg width="20px" height="20px" viewBox="0 0 16 16">
+          <path d="M8.0625,11 L8.0625,13.3950919 C8.0625,13.7160294 8.44275,13.8427794 8.6661875,13.6778419
+            L12.7945,10.7975294 C13.01875,10.6342169 12.9626875,10.3652794 12.73925,10.2019669 L8.694625,7.32165438
+            C8.4695625,7.15834188 8.0625,7.28265438 8.0625,7.60440438 L8.0625,10 L4.99961498,10 C4.44422807,10 4,9.55697267 4,9.00038502
+            L4,3.99961498 C4,3.44422807 4.44302733,3 4.99961498,3 L7.00038502,3 L7.00038502,2 L4.99961498,2
+            C3.88743329,2 3,2.89525812 3,3.99961498 L3,9.00038502 C3,10.1125667 3.89525812,11 4.99961498,11 L8.0625,11 Z"></path>
+        </svg>
+
+        <bdi>
+          Valider 
+        </bdi>
+      </div>
+    
+        </div>
+      </div>
+    
+      <div class="js-question question question--layout-2 question_multiselect" data-visibility="is-hidden" data-answered="0" data-parent="0" data-number="3" data-ident="4964" data-type="1">
+
+        <div class="question-stuff">
+          <div class="question__title">
+            <h2 class="">
+              <bdi>
+                Parmi les descriptions suivantes, lesquelles 
+associez-vous à des moments de consommation d'alcool (Plusieurs réponses
+ possibles):
+              </bdi>
+            </h2>
+          </div>
+
+          <div class="question-controls">
+            <div class="js-item js-item-0 button button--default button--rounded control control--skip">
+              <div class="bullet" data-number="0" data-result="-1"></div>
+              Passer
+            </div>
+
+<div class="js-next control control--next control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M6,11.5v-8l2.4,2.3C8.6,6,8.9,6,9.1,5.9l0.7-0.7C10,5,10,4.7,9.9,4.5L5.3,0.1C5.1,0,4.8,0,4.6,0.1
+      L0.1,4.5C0,4.7,0,5,0.1,5.1l0.7,0.7C1.1,6,1.4,6,1.6,5.8L4,3.5v8C4,11.8,4.2,12,4.5,12h1C5.8,12,6,11.8,6,11.5z"></path>
+  </svg>
+</div>
+<div class="js-prev control control--prev control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M4,0.5v8L1.6,6.1C1.4,6,1.1,6,0.9,6.1L0.1,6.8C0,7,0,7.3,0.1,7.5l4.5,4.3c0.2,0.2,0.5,0.2,0.7,0
+      l4.5-4.3c0.2-0.2,0.2-0.5,0-0.7L9.1,6.2C8.9,6,8.6,6,8.4,6.2L6,8.5v-8C6,0.2,5.8,0,5.5,0h-1C4.2,0,4,0.2,4,0.5z"></path>
+  </svg>
+</div>
+          </div>
+        </div>
+
+        <div class="js-options question__options">
+          
+      <div class="question__list-container question__list-container_multiselect">
+        <ul class="question__list question__list_multiselect options-amount_7">
+          
+      <li class="js-item js-item-1 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="1" data-result="1"></span>
+
+        <span class="js-text">Avec des amis dans un bar / club</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Avec des amis dans un bar / club</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-2 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="2" data-result="4"></span>
+
+        <span class="js-text">Avec des collègues après le travail</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Avec des collègues après le travail</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-3 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="3" data-result="2"></span>
+
+        <span class="js-text">Un dîner avec mon partenaire</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Un dîner avec mon partenaire</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-4 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="4" data-result="6"></span>
+
+        <span class="js-text">À un repas familial</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">À un repas familial</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-5 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="5" data-result="5"></span>
+
+        <span class="js-text">Seul</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Seul</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-6 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="6" data-result="3"></span>
+
+        <span class="js-text">Une soirée chez moi</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Une soirée chez moi</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-7 js-item-checkbox">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="7" data-result="7"></span>
+
+        <span class="js-text">En assistant à un événement</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">En assistant à un événement</span>
+        </span>
+      </li>
+    
+        </ul>
+      </div>
+
+      <div class="button button--solid button--rounded button-answer">
+        <svg width="20px" height="20px" viewBox="0 0 16 16">
+          <path d="M8.0625,11 L8.0625,13.3950919 C8.0625,13.7160294 8.44275,13.8427794 8.6661875,13.6778419
+            L12.7945,10.7975294 C13.01875,10.6342169 12.9626875,10.3652794 12.73925,10.2019669 L8.694625,7.32165438
+            C8.4695625,7.15834188 8.0625,7.28265438 8.0625,7.60440438 L8.0625,10 L4.99961498,10 C4.44422807,10 4,9.55697267 4,9.00038502
+            L4,3.99961498 C4,3.44422807 4.44302733,3 4.99961498,3 L7.00038502,3 L7.00038502,2 L4.99961498,2
+            C3.88743329,2 3,2.89525812 3,3.99961498 L3,9.00038502 C3,10.1125667 3.89525812,11 4.99961498,11 L8.0625,11 Z"></path>
+        </svg>
+
+        <bdi>
+          Valider 
+        </bdi>
+      </div>
+    
+        </div>
+      </div>
+    
+      <div class="js-question question question--layout-2 " data-visibility="is-hidden" data-answered="0" data-parent="1" data-number="2" data-ident="4960" data-type="0">
+
+        <div class="question-stuff">
+          <div class="question__title">
+            <h2 class="">
+              <bdi>
+                Vous êtes
+              </bdi>
+            </h2>
+          </div>
+
+          <div class="question-controls">
+            <div class="js-item js-item-0 button button--default button--rounded control control--skip">
+              <div class="bullet" data-number="0" data-result="-1"></div>
+              Passer
+            </div>
+
+<div class="js-next control control--next control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M6,11.5v-8l2.4,2.3C8.6,6,8.9,6,9.1,5.9l0.7-0.7C10,5,10,4.7,9.9,4.5L5.3,0.1C5.1,0,4.8,0,4.6,0.1
+      L0.1,4.5C0,4.7,0,5,0.1,5.1l0.7,0.7C1.1,6,1.4,6,1.6,5.8L4,3.5v8C4,11.8,4.2,12,4.5,12h1C5.8,12,6,11.8,6,11.5z"></path>
+  </svg>
+</div>
+<div class="js-prev control control--prev control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M4,0.5v8L1.6,6.1C1.4,6,1.1,6,0.9,6.1L0.1,6.8C0,7,0,7.3,0.1,7.5l4.5,4.3c0.2,0.2,0.5,0.2,0.7,0
+      l4.5-4.3c0.2-0.2,0.2-0.5,0-0.7L9.1,6.2C8.9,6,8.6,6,8.4,6.2L6,8.5v-8C6,0.2,5.8,0,5.5,0h-1C4.2,0,4,0.2,4,0.5z"></path>
+  </svg>
+</div>
+          </div>
+        </div>
+
+        <div class="js-options question__options">
+          
+      <div class="question__list-container ">
+        <ul class="question__list  options-amount_7">
+          
+      <li class="js-item js-item-1 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="1" data-result="1"></span>
+
+        <span class="js-text">Moins de 18 ans</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Moins de 18 ans</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-2 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="2" data-result="2"></span>
+
+        <span class="js-text">Un homme 18-24 ans</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Un homme 18-24 ans</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-3 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="3" data-result="3"></span>
+
+        <span class="js-text">Une femme 18-24 ans</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Une femme 18-24 ans</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-4 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="4" data-result="4"></span>
+
+        <span class="js-text">Un homme 25-34 ans</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Un homme 25-34 ans</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-5 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="5" data-result="5"></span>
+
+        <span class="js-text">Une femme 25-34 ans</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Une femme 25-34 ans</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-6 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="6" data-result="6"></span>
+
+        <span class="js-text">Un homme 35+ ans</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Un homme 35+ ans</span>
+        </span>
+      </li>
+    
+      <li class="js-item js-item-7 ">
+        <span class="question__list__bar" style="width:0%;"></span>
+        <span class="question__list__number"></span>
+        <span class="bullet option" data-number="7" data-result="7"></span>
+
+        <span class="js-text">Une femme 35+ ans</span>
+
+        <span class="js-item-checkbox-wrap">
+          <div class="checkbox-item">
+            <input class="question-check" type="checkbox">
+            <span class="checkbox"></span>
+          </div>
+          <span class="js-text">Une femme 35+ ans</span>
+        </span>
+      </li>
+    
+        </ul>
+      </div>
+
+      <div class="button button--solid button--rounded button-answer">
+        <svg width="20px" height="20px" viewBox="0 0 16 16">
+          <path d="M8.0625,11 L8.0625,13.3950919 C8.0625,13.7160294 8.44275,13.8427794 8.6661875,13.6778419
+            L12.7945,10.7975294 C13.01875,10.6342169 12.9626875,10.3652794 12.73925,10.2019669 L8.694625,7.32165438
+            C8.4695625,7.15834188 8.0625,7.28265438 8.0625,7.60440438 L8.0625,10 L4.99961498,10 C4.44422807,10 4,9.55697267 4,9.00038502
+            L4,3.99961498 C4,3.44422807 4.44302733,3 4.99961498,3 L7.00038502,3 L7.00038502,2 L4.99961498,2
+            C3.88743329,2 3,2.89525812 3,3.99961498 L3,9.00038502 C3,10.1125667 3.89525812,11 4.99961498,11 L8.0625,11 Z"></path>
+        </svg>
+
+        <bdi>
+          Valider 
+        </bdi>
+      </div>
+    
+        </div>
+      </div>
+    
+
+          <div class="js-question question question--layout-1" data-visibility="is-visible" data-answered="0" data-number="0">
+
+              <div class="question--layout-1__inner">
+                <div class="question__title">
+                  <h1>
+                    <bdi>
+                      Bonjour, nous aimerions avoir votre opinion sur une étude, cela ne vous prendra que 30s :) 
+                    </bdi>
+                  </h1>
+                </div>
+                <div class="js-options question__options">
+                  <div>
+                    <div class="checkbox-wrap disclaimer font-size-xs">
+                      <label>
+                        <div class="checkbox-item">
+                          <input class="js-check" type="checkbox" required="">
+                          <span class="checkbox"></span>
+                        </div>
+                        <bdi>
+                          J'accepte les <a target="_blank" href="https://privacy.userreport.com/fr-FR/for-users/privacy-policy">conditions générales</a>
+                        </bdi>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="button-group-container">
+                    <div class="button-group">
+                      <div class="js-item js-item-1 js-accept button button--default button--rounded">
+                        Oui, certainement
+                        <span class="bullet" data-number="1"></span>
+                      </div>
+                      <div class="js-item js-item-0 js-close js-decline button button--default button--rounded button-delay">
+                        Peut-être la prochaine fois
+                        <span class="bullet" data-number="0"></span>
+                      </div>
+                    </div>
+
+<div class="js-next control control--next control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M6,11.5v-8l2.4,2.3C8.6,6,8.9,6,9.1,5.9l0.7-0.7C10,5,10,4.7,9.9,4.5L5.3,0.1C5.1,0,4.8,0,4.6,0.1
+      L0.1,4.5C0,4.7,0,5,0.1,5.1l0.7,0.7C1.1,6,1.4,6,1.6,5.8L4,3.5v8C4,11.8,4.2,12,4.5,12h1C5.8,12,6,11.8,6,11.5z"></path>
+  </svg>
+</div>
+<div class="js-prev control control--prev control--hidden">
+  <svg width="10px" height="12px" viewBox="0 0 10 12">
+    <path class="fill" d="M4,0.5v8L1.6,6.1C1.4,6,1.1,6,0.9,6.1L0.1,6.8C0,7,0,7.3,0.1,7.5l4.5,4.3c0.2,0.2,0.5,0.2,0.7,0
+      l4.5-4.3c0.2-0.2,0.2-0.5,0-0.7L9.1,6.2C8.9,6,8.6,6,8.4,6.2L6,8.5v-8C6,0.2,5.8,0,5.5,0h-1C4.2,0,4,0.2,4,0.5z"></path>
+  </svg>
+</div>
+                  </div>
+
+                </div>
+              </div>
+          </div>
+
+          <script>
+            Array.prototype.forEach.call(document.querySelectorAll('[data-l10n]'), function(node) {
+              var key = node.getAttribute('data-l10n');
+
+              var value = mediaSettings.localization;
+              if (key.split('.').every(function(part) {
+                return (value = value[part]);
+              })) {
+                node.outerHTML = value;
+              } else {
+                node.outerHTML = node.innerHTML;
+              }
+            });
+          </script>
+
+        </div>
+
+      </div>
+    </div>
+
+    <script type="text/javascript" src="survey_data/app.js"></script>
+	
+
+<iframe style="position: absolute; width: 1px; height: 1px; top: -1000px; left: -1000px; visibility: hidden;" tabindex="-1" title="Empty" aria-hidden="true" src="survey_data/server.htm"></iframe></body></html>
